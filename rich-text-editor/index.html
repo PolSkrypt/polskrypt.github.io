@@ -41,6 +41,8 @@
 			table.descriptions td {border:1px solid black;background:#e2e2e2;}
 			table.descriptions th {border-bottom:2px solid black;border-right:1px solid black;background:#525252;color:white;text-align:left;}
 			footer {background-image:linear-gradient(#0c0c0c, #333333);color:white;padding:5px 10px;text-align:center;}
+			.wczytaj {border:8px solid black;border-radius:50%;border-top:8px solid yellow;width:32px;height:32px;animation:dawaj 1s linear infinite;margin:10px auto;}
+			@keyframes dawaj {0% {transform: rotate(0deg);} 100% {transform:rotate(360deg);}}
 		</style>
 		<script src="https://cdn.jsdelivr.net/gh/polskrypt/skrypty/richtexteditor.js"></script>
 		<link href="https://fonts.googleapis.com/css2?family=Anton&family=Architects+Daughter&family=Libre+Baskerville&family=Libre+Franklin&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -70,8 +72,8 @@
 			<div id="content">
 				<h2 id="sample">Sample</h2>
 				<div class="text">Below you can try the Rich Text Editor made with this JavaScript library:</div>
-				<div id="RichTextEditor"></div>
-				
+				<noscript style="display:inline-block;margin:15px 20px 0 20px;padding:5px 10px;border:2px inset gray;background:white;cursor:text;font-size:14px;font-style:italic;">⚠️ Please enable JavaScript in your browser to view the Rich Text Editor.<style>.wczytaj{display:none;}</style></noscript>
+				<div id="RichTextEditor"><div class="wczytaj"></div></div>
 				<h2 id="installation">Installation</h2>
 				<div class="text">To install this <strong>Rich Text Editor JavaScript Library</strong> on your web page or web app, paste the following line in <mark>&lt;head&gt;</mark> section (just before the closing <mark>&lt;/head&gt;</mark> tag):</div>
 				<div class="code">&lt;script src="https://cdn.jsdelivr.net/gh/polskrypt/skrypty/richtexteditor.js"&gt;&lt;/script&gt;</div>
