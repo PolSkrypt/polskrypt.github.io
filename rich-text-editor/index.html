@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Rich Text Editor JavaScript Library</title>
+		<meta name="description" content="Lightweight javascript library without any dependencies that will help you to easily create your own modern Rich Text Editor and WYSIWYG HTML Editor with many advanced editing tools.">
+		<meta name="keywords" content="text, html, editor, rich, wysiwyg, javascript, library">
+		<meta property="og:title" content="Rich Text Editor JavaScript Library">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://polskrypt.github.io/rich-text-editor">
+        <meta property="og:description" content="Lightweight javascript library without any dependencies that will help you to easily create your own modern Rich Text Editor and WYSIWYG HTML Editor with many advanced editing tools.">
+		<style>
+			body {margin:0;font-family: 'Libre Franklin', sans-serif;font-size:15px;line-height:1.4;}
+			#main {max-width:900px;margin:0 auto;}
+			#main:after {content:'';display:block;clear:both;}
+			#tableOfContent {float:left;box-sizing:border-box;width:160px;height:100vh;position:sticky;top:0;background:#292929;border-left:2px solid black;}
+			#tableOfContent ul {padding:4px 10px;margin:0 0 0 12px;list-style-type:none;}
+			#tableOfContent ul ul {padding:0 2px;}
+			#tableOfContent ul a {color:white;text-decoration:none;}
+			#tableOfContent ul a:hover {text-decoration:underline;}
+			#tableOfContent ul a:active li {padding-left:5px;}
+			#tableOfContent ul li {line-height:1.2;font-size:16px;}
+			#tableOfContent ul ul li {font-size:15px;}
+			#tableOfContent ul li:before {content:'';border-color:transparent white;border-style:solid;border-width:4px 0 4px 6px;display:block;height:0;width:0;left:-12px;top:14px;position:relative;}
+			#page {float:left;box-sizing:border-box;width:calc(100% - 160px);border-right:2px solid black;border-left:2px solid black;}
+			header {background-image:linear-gradient(#0c0c0c, #333333);color:white;padding:10px;}
+			header h1 {margin:0 10px 10px 10px;madding:5px;text-shadow: 2px 2px 8px yellow;font-size:24px;}
+			.site-description {font-size:16px;font-style:italic;}
+			h2 {margin:16px 5px 9px 5px;font-size:20px;text-decoration:underline;}
+			#content {background:#c5c5c5;color:black;padding:10px;}
+			#content a {color:#0000c5;text-decoration:none;}
+			#content a:hover {text-decoration:underline;}
+			#content a:active {color:#b10000;}
+			.code {background:white;border:2px inset gray;padding:5px;margin:10px;font-family: 'Share Tech Mono', monospace;font-size:13px;}
+			.code .indent {margin-left:30px;}
+			.code .jsDescription {color:#008900;}
+			.code .var {color:blue;}
+			table.descriptions {border-collapse:collapse;border:2px solid black;margin:10px;}
+			table.descriptions td, table.descriptions th {padding:2px 5px;}
+			table.descriptions td {border:1px solid black;background:#e2e2e2;}
+			table.descriptions th {border-bottom:2px solid black;border-right:1px solid black;background:#525252;color:white;text-align:left;}
+			footer {background-image:linear-gradient(#0c0c0c, #333333);color:white;padding:5px 10px;text-align:center;}
+		</style>
+		<script src="RichTextEditor.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Anton&family=Architects+Daughter&family=Libre+Baskerville&family=Libre+Franklin&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div id="main">
+			<div id="tableOfContent">
+				<ul>
+					<a href="#sample"><li>Sample</li></a>
+					<a href="#installation"><li>Installation</li></a>
+					<a href="#usage"><li>Usage</li></a>
+					<a href="#documentation"><li>Documentation</li></a>
+					<ul>
+						<a href="#settings"><li>Settings</li></a>
+						<a href="#styling"><li>Styling</li></a>
+						<a href="#methods"><li>Methods</li></a>
+					</ul>
+					<a href="#example"><li>Example</li></a>
+				</ul>
+			</div>
+			
+			<div id="page">
+			<header>
+				<h1>Rich Text Editor JavaScript Library</h1>
+				<div class="site-description">Lightweight javascript library without any dependencies that will help you to easily create your own modern Rich Text Editor with many advanced editing tools.</div>
+			</header>
+			<div id="content">
+				<h2 id="sample">Sample</h2>
+				<div class="text">Below you can try the Rich Text Editor made with this JavaScript library:</div>
+				<div id="RichTextEditor"></div>
+				
+				<h2 id="installation">Installation</h2>
+				<div class="text">To install this <strong>Rich Text Editor JavaScript Library</strong> on your web page or web app, paste the following line in <mark>&lt;head&gt;</mark> section (just before the closing <mark>&lt;/head&gt;</mark> tag):</div>
+				<div class="code">&lt;script src="https://cdn.jsdelivr.net/gh/polskrypt/skrypty/richtexteditor.js"&gt;&lt;/script&gt;</div>
+				
+				<h2 id="usage">Usage</h2>
+				<div class="text">Then to create the WYSIWYG editor, paste the following code in the selected place on your website:</div>
+				<div class="code">&lt;div id="RichTextEditor"&gt;&lt;/div&gt;<br>
+				&lt;script&gt;<br>
+				var textEditor = new kozyrTextEditor(document.getElementById('RichTextEditor'));<br>
+				&lt;/script&gt;</div>
+				<div class="text">This code will generate the same text editor as in the example above. The editor will appear exactly at the place where you will paste the code. Of course, you can make any changes in the editor and fully adapt it to your needs. A detailed description of using the editor can be found in the documentation below.</div>
+				
+				<h2 id="documentation">Documentation</h2>
+				<div class="text">To create an editor, you need to initialize a new editor object and assign it to any variable:</div>
+				<div class="code">var textEditor = new kozyrTextEditor(element, settings, css)</div>
+				<div class="text">As you can see, you can pass three arguments to the editor constructor:</div>
+				<table class="descriptions">
+					<thead>
+						<tr>
+							<th>Argument</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>element</td>
+							<td>html DOM element where the text editor is to be created (required).</td>
+						</tr>
+						<tr>
+							<td>settings</td>
+							<td>Object containing additional settings for the editor (optional). Possible properties are: '<a href="#toolbar">toolbar</a>', '<a href="#items">items</a>', '<a href="#infoBox">infoBox</a>', '<a href="#infos">infos</a>', '<a href="#initialHTML">initialHTML</a>' and '<a href="#texts">texts</a>'. See below for usage descriptions for all properties.</td>
+						</tr>
+						<tr>
+							<td>css</td>
+							<td>String with an additional CSS rules for customize editor's look (optional). You can find a list of the most important CSS classes used in the editor below.</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 id="settings">Settings</h3>
+				<div class="text">In the <mark>settings</mark> object you can customize the text editor with the following properties:</div>
+				<table class="descriptions">
+					<thead>
+						<tr>
+							<th>Property</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="toolbar">
+							<td>toolbar</td>
+							<td>String</td>
+							<td>Possible values are <mark>top</mark> (default), <mark>bottom</mark> or <mark>none</mark>. Set where to display the toolbar with text editing tools (<mark>none</mark> to not display it at all).</td>
+						</tr>
+						<tr id="items">
+							<td>items</td>
+							<td>Array</td>
+							<td>An array of text editing tools that will be available in the toolbar. If not defined, all tools will be available. Possible tools include: 'bold', 'italic', 'underline', 'strikethrough', 'group', 'alignLeft', 'alignCenter', 'alignRight', 'justify', 'group', 'orderedList', 'unorderedList', 'indent', 'outdent', 'subscript', 'superscript', 'newLine', 'undo', 'redo', 'clean', 'copy', 'paste', 'cut', 'group', 'background', 'fontColor', 'group', 'removeFormat', 'selectAll', 'horizontalLine', 'save', 'open', 'link', 'image', 'emoticons', 'symbols', 'table', 'print', 'download', 'upload', 'HTMLmode', 'newLine', 'fontName', 'fontSize', 'formatting'</td>
+						</tr>
+						<tr id="infoBox">
+							<td>infoBox</td>
+							<td>String</td>
+							<td>Possible values are <mark>bottom</mark> (default), <mark>top</mark> or <mark>none</mark>. Set where to display the box with informations about the text in the editor (<mark>none</mark> to not display it at all).</td>
+						</tr>
+						<tr id="infos">
+							<td>infos</td>
+							<td>Array</td>
+							<td>Array of elements to be shown in the infoBox. Possible elements are <mark>chars</mark> (shows the number of characters in the text), <mark>words</mark> (shows the number of words in the text) and <mark>search</mark> (generates a text search field).</td>
+						</tr>
+						<tr id="initialHTML">
+							<td>initialHTML</td>
+							<td>String</td>
+							<td>Defines an initial HTML string that will be shown in the editor at the start.</td>
+						</tr>
+						<tr id="texts">
+							<td>texts</td>
+							<td>Object</td>
+							<td>In this object you can translate texts appearing in the editor. As properties, enter the selected texts to be changed, and as their values, the texts that will be displayed instead. The available properties are: 'bold', 'italic', 'underline', 'strikethrough', 'group', 'alignLeft', 'alignCenter', 'alignRight', 'justify', 'group', 'orderedList', 'unorderedList', 'indent', 'outdent', 'subscript', 'superscript', 'newLine', 'undo', 'redo', 'clean', 'copy', 'paste', 'cut', 'group', 'background', 'fontColor', 'group', 'removeFormat', 'selectAll', 'horizontalLine', 'save', 'open', 'link', 'image', 'emoticons', 'symbols', 'table', 'print', 'download', 'upload', 'HTMLmode', 'newLine', 'fontName', 'fontSize', 'formatting', 'chars', 'words', 'search'</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h3 id="styling">Adding own CSS rules</h3>
+				<div class="text">As the third argument, you can pass a string with your own CSS rules to the text editor constructor. Thanks to this, you can give your editor any look you want. The most important classes used by the editor are:</div>
+				<table class="descriptions">
+					<thead>
+						<tr>
+							<th>Class</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>.kozyrRichTextEditor</td>
+							<td>Text field in the 'rich text editor' mode.</td>
+						</tr>
+						<tr>
+							<td>.kozyrHTMLeditor</td>
+							<td>Textarea in 'HTML' editor mode.</td>
+						</tr>
+						<tr>
+							<td>.kozyrToolbar</td>
+							<td>Toolbar with text-editing tools.</td>
+						</tr>
+						<tr>
+							<td>.kozyrToolbar .item</td>
+							<td>Class of each text editing item.</td>
+						</tr>
+						<tr>
+							<td>.kozyrToolbar .item.active</td>
+							<td>Class of active text editing items.</td>
+						</tr>
+						<tr>
+							<td>.kozyrSelect</td>
+							<td>Text editing tools in the form of a select field, such as fontName, fontSize or blockFormat</td>
+						</tr>
+						<tr>
+							<td>.kozyrToolsGroup</td>
+							<td>Group of text editing items in the toolbar.</td>
+						</tr>
+						<tr>
+							<td>.kozyrSVG</td>
+							<td>SVG icon included in each of toolbar's items.</td>
+						</tr>
+						<tr>
+							<td>.kozyrInfoBox</td>
+							<td>Information bar with infos about the text.</td>
+						</tr>
+						<tr>
+							<td>.kozyrInfoBox .charsCounterBlock</td>
+							<td>Character counter in the infobox.</td>
+						</tr>
+						<tr>
+							<td>.kozyrInfoBox .wordsCounterBlock</td>
+							<td>Word counter in the infobox.</td>
+						</tr>
+						<tr>
+							<td>.kozyrInfoBox .searchInput</td>
+							<td>Text field for inline search.</td>
+						</tr>
+						<tr>
+							<td>.kozyrInfoBox .searchButton</td>
+							<td>Search button.</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="text" style="font-style:italic;font-size:14px;">If you intend to put more than one editor on one page and use different CSS rules for them, remember to precede each class with the identifier of the element in which the editor is located, so that the given style refers only to the selected editor and not to others.</div>
+				
+				<h3 id="methods">Methods</h3>
+				<div class="text">The editor object has the following methods:</div>
+				<table class="descriptions">
+					<thead>
+						<tr>
+							<th>Method</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>html()</td>
+							<td>Returns the html string currently contained in the editor, or, if you pass it a string as the argument, sets it as the new editor value.</td>
+						</tr>
+						<tr>
+							<td>focus()</td>
+							<td>Focuses text editor.</td>
+						</tr>
+						<tr>
+							<td>blur()</td>
+							<td>Blur the text editor.</td>
+						</tr>
+						<tr>
+							<td>select()</td>
+							<td>Selects the entire contents of a text editor.</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h2 id="example">Example</h2>
+				<h3>Settings</h3>
+				<div class="text">In the example below, we create a text editor assigned to the element with the identifier "RichTextEditor", and pass it the following settings:</div>
+				
+				<div class="code">&lt;div id="RichTextEditor"&gt;&lt;/div&gt;<br>
+				&lt;script&gt;<br>
+				<span class="var">var</span> textEditorElement = document.getElementById('RichTextEditor'); <span class="jsDescription">// we capture the html dom element into which we will place our text editor</span><br>
+				<span class="var">var</span> textEditorSettings = { <span class="jsDescription">// text editor settings:</span>
+				<div class="indent">toolbar: 'top', <span class="jsDescription">// the toolbar is to be placed above the text field</span></div>
+				<div class="indent">items: ['bold', 'italic', 'underline', 'group', 'alignLeft', 'alignCenter', 'alignRight', 'justify', 'newLine', 'fontName', 'fontSize'], <span class="jsDescription">// we list the editing tools to be included in the toolbar</span></div>
+				<div class="indent">infoBox: 'bottom', <span class="jsDescription">// the infoBox is to be placed below the text field</span></div>
+				<div class="indent">infos: ['chars', 'words', 'search'], <span class="jsDescription">// we list the elements to be included in the infoBox</span></div>
+				<div class="indent">initialHTML: 'Rich Text Editor...', <span class="jsDescription">// text that will be the initial value of our editor</span></div>
+				<div class="indent">texts: { <span class="jsDescription">// we translate our editor into Polish:</span>
+					<div class="indent">bold: 'Pogrubienie',</div>
+					<div class="indent">italic: 'Kursywa',</div>
+					<div class="indent">underline: 'Podkreślenie',</div>
+					<div class="indent">alignLeft: 'Wyrównaj do lewej',</div>
+					<div class="indent">alignCenter: 'Wyśrodkuj',</div>
+					<div class="indent">alignRight: 'Wyrównaj do prawej',</div>
+					<div class="indent">justify: 'Wyjustuj',</div>
+					<div class="indent">fontName: 'Czcionka',</div>
+					<div class="indent">fontSize: 'Wielkość czcionki',</div>
+					<div class="indent">chars: 'Znaków',</div>
+					<div class="indent">words: 'Słów',</div>
+					<div class="indent">search: 'Szukaj'</div>
+					<div class="indent">repeats: 'powtórzeń'</div>
+				}</div>
+				}<br>
+				<span class="jsDescription">// we create CSS rules to change the appearance of our editor:</span><br>
+				<span class="var">var</span> textEditorCSS = `#RichTextEditor .kozyrToolbar, #RichTextEditor .kozyrInfoBox {background:yellow;}
+				<div class="indent">#RichTextEditor .kozyrToolbar .item {background:black;}</div>`;<br>
+				<span class="var">var</span> textEditor = new kozyrTextEditor(textEditorElement, textEditorSettings, textEditorCSS); <span class="jsDescription">// we create a new editor, passing it as arguments the previously defined values of element, settings and css</span><br>
+				&lt;/script&gt;</div>
+				
+				<div class="text">We wish you a pleasant, easy and effective use of this free rich text editor.</div>
+				
+			</div>
+			
+			<footer>Rich Text Editor JavaScript Library by <a href="https://polskrypt.github.io">PolSkrypt</a></footer>
+			
+			</div>
+		</div>
+		
+<script>
+var txtEditor = new kozyrTextEditor(document.getElementById('RichTextEditor'), {
+	toolbar : 'top',
+	infoBox : 'bottom',
+	infos : ['chars', 'words', 'search'],
+	texts : {
+		bold : 'O żesz kurwa...',
+		italic : 'Kursywa',
+		background : 'Kolor tła',
+		chars : 'znaków',
+		words : 'słów'
+	}
+});
+</script>
+	</body>
+</html>
